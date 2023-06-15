@@ -3,13 +3,13 @@ for n = 1:10
     % Create a matrix with random integers from 1 to 100
     data = randi(100, 5, 10);
     
-    % Define the file name, including the iteration variable n
+    % Define the file name, and the iteration variable n
     filename = sprintf('random_numbers_%d.txt', n);
     
     % Open the file for writing
     fid = fopen(filename, 'wt');
     
-    % Loop over the rows
+    % Loop over rows
     for i = 1:size(data, 1)
         % Loop over the columns
         for j = 1:size(data, 2)
