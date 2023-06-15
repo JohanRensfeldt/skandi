@@ -1,0 +1,30 @@
+% select the input directory
+inputFolderPath = uigetdir(pwd, 'Select Input Folder');
+
+% Check if the user has selected a directory
+if inputFolderPath ~= 0
+    % Prompt the user to select the output directory
+    outputFolderPath = uigetdir(pwd, 'Select Output Folder');
+    
+    % Check if the user has selected a directory
+    if outputFolderPath ~= 0
+        % Get a list of all .opg files in the input folder
+        files = dir(fullfile(inputFolderPath, '*.txt'));
+
+        % Process each file
+        for i = 1:length(files)
+            inputFile = fullfile(inputFolderPath, files(i).name);
+
+            % Generate the output file name
+            [~, name, ext] = fileparts(inputFile);
+            outputFile = fullfile(outputFolderPath, [name '_processed' ext]);
+
+            % Call the function to process the file
+            processFile3(inputFile, outputFile,11,15);
+        end
+    else
+        disp('No output folder selected. Exiting...');
+    end
+else
+    disp('No input folder selected. Exiting...');
+end
